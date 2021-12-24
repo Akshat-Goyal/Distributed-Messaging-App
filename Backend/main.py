@@ -83,17 +83,9 @@ def createNewChunk(conversationID, chunkNum):
 
 def getServerLocation(conversationID):
     try:
-
-
-<< << << < HEAD
         chunkInfo = ConversationChunkMappingCollection.find(
             {"$query": {"conversationID": conversationID}, "$orderby": {"chunkNum": -1}})[0]
-        print(chunkInfo)
-== == == =
-        chunkInfo = ConversationChunkMappingCollection.find(
-            {"$query": {"conversationID": conversationID}, "$orderby": {"chunkNum": -1}})[0]
->>>>>> > 898274fcb3aa5cedeca5355b16b56c32cee1a52f
-
+        
         if chunkInfo["size"] >= MaxChunkSize:
             chunkInfo = createNewChunk(conversationID, chunkInfo["chunkNum"]+1)
             if chunkInfo == -1:
